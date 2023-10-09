@@ -10,18 +10,25 @@ constructor(props) {
     status: 'Off',
   }
 
-  this.status = this.status.bind(this);
 }
 
 status() {
- this.setState({
-  status: 'On',
-}); 
+  if(this.state.status === 'On') {
+    this.setState({
+      status: 'Off',
+    }); 
+  }
+  else if(this.state.status === 'Off') {
+    this.setState({
+      status: 'On',
+    }); 
+  }
+ 
 }
 
     render() {
         return (
-          <div className="toggler" onClick={this.status}>{this.state.status}</div>
+          <div className="toggler" onClick={() => this.status()}>{this.state.status}</div>
         );
     }
 }
